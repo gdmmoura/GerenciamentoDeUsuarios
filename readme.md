@@ -11,3 +11,12 @@ Os Test Cases aqui no script serão para:
 </ul>
 
 No diretório `/src`, encontra-se o arquivo `config.robot` que contém o json de dados para cadastrar e o de atualização do usuário que será usado no arquivo `main.robot`, além das variáveis que armazenam o alias, os headers e a url da API. 
+
+Existem 4 test case nessa suite de testes com suas descrições auto-explicativas:
+
+- Cadastrar Usuario
+- Verifica se o usuario cadastrado existe
+- Atualiza a password do usuario
+- Deleta o usuario criado
+
+Ao executar o teste via comando no terminal `robot -d ./logs main.robot`, é criado a pasta `logs` juntamente com os logs resultantes dos cenários executados.
