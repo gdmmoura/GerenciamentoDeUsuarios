@@ -9,3 +9,5 @@ Os Test Cases aqui no script serão para:
     <li>Atualiza a senha do usuário cadastrado</li>
     <li>Deleta o usuário cadastrado</li>
 </ul>
+
+No diretório `/src`, encontra-se o arquivo `config.robot` que contém o json de dados para cadastrar e o de atualização do usuário que será usado no arquivo `main.robot`, além das variáveis que armazenam o alias, os headers e a url da API. 
