@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.2 on win32)" generated="2024-07-17T18:16:45.928787" rpa="false" schemaversion="5">
+<suite id="s1" name="Main" source="C:\Users\gdmou\OneDrive\Documents\RobotFramework\GerenciamentoDeUsuarios\main.robot">
+<test id="s1-t1" name="Cadastrar Usuario" line="5">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:46.645144" level="INFO">Creating Session using : alias=serverest-usuarios, url=https://serverest.dev/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=${alias}</arg>
+<arg>url=${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-17T18:16:46.643960" elapsed="0.001689"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.054894" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '107'} 
+ body={"nome": "Gustavo de Moura", "email": "gjmoura721@gmail.com", "password": "teste", "administrador": "true"} 
+ </msg>
+<msg time="2024-07-17T18:16:47.054894" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '60bf5d276f8cb52bd2e964b892bb1597;o=1', 'Date': 'Wed, 17 Jul 2024 21:16:46 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "KYJhkN5tTF94jbx9"
+} 
+ </msg>
+<msg time="2024-07-17T18:16:47.054894" level="INFO">C:\Users\gdmou\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-07-17T18:16:47.054894" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>alias=${alias}</arg>
+<arg>url=/usuarios</arg>
+<arg>headers=${headers}</arg>
+<arg>data=${dados}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-17T18:16:46.647233" elapsed="0.407661"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-07-17T18:16:47.054894" level="INFO">${USER_ID} = KYJhkN5tTF94jbx9</msg>
+<arg>${USER_ID}</arg>
+<arg>${response.json()['_id']}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.054894" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.054894" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-07-17T18:16:47.054894" elapsed="0.000000"/>
+</kw>
+<doc>Cadastra um usuario de acordo com o json do arquivo config.robot</doc>
+<status status="PASS" start="2024-07-17T18:16:46.641959" elapsed="0.412935"/>
+</test>
+<test id="s1-t2" name="Verifica se o usuario cadastrado existe" line="19">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.065668" level="INFO">Creating Session using : alias=serverest-usuarios, url=https://serverest.dev/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=${alias}</arg>
+<arg>url=${url}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-17T18:16:47.064655" elapsed="0.001013"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.460189" level="INFO">GET Request : url=https://serverest.dev/usuarios?_id=KYJhkN5tTF94jbx9 
+ path_url=/usuarios?_id=KYJhkN5tTF94jbx9 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json'} 
+ body=None 
+ </msg>
+<msg time="2024-07-17T18:16:47.460189" level="INFO">GET Response : url=https://serverest.dev/usuarios?_id=KYJhkN5tTF94jbx9 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '31c389163b9f41b8b8e8d5e1e9903210', 'Date': 'Wed, 17 Jul 2024 21:16:47 GMT', 'Server': 'Google Frontend', 'Content-Length': '261'} 
+ body={
+    "quantidade": 1,
+    "usuarios": [
+        {
+            "nome": "Gustavo de Moura",
+            "email": "gjmoura721@gmail.com",
+            "password": "teste",
+            "administrador": "true",
+            "_id": "KYJhkN5tTF94jbx9"
+        }
+    ]
+} 
+ </msg>
+<msg time="2024-07-17T18:16:47.460189" level="INFO">C:\Users\gdmou\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-07-17T18:16:47.460189" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=${alias}</arg>
+<arg>url=/usuarios?_id=${USER_ID}</arg>
+<arg>expected_status=200</arg>
+<arg>headers=${headers}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.066672" elapsed="0.393517"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-07-17T18:16:47.460189" level="INFO">${USER_ID} = KYJhkN5tTF94jbx9</msg>
+<arg>${USER_ID}</arg>
+<arg>${response.json()['usuarios'][0]['_id']}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.460189" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.460189" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-07-17T18:16:47.460189" elapsed="0.000000"/>
+</kw>
+<doc>Verifica se usuario cadastrado existe</doc>
+<status status="PASS" start="2024-07-17T18:16:47.054894" elapsed="0.405295"/>
+</test>
+<test id="s1-t3" name="Atualiza a password do usuario" line="32">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.474371" level="INFO">Creating Session using : alias=serverest-usuarios, url=https://serverest.dev/, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=${alias}</arg>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-17T18:16:47.473352" elapsed="0.001019"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.881110" level="INFO">PUT Request : url=https://serverest.dev/usuarios/KYJhkN5tTF94jbx9 
+ path_url=/usuarios/KYJhkN5tTF94jbx9 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '107'} 
+ body={"nome": "Gustavo de Moura", "email": "gjmoura721@gmail.com", "password": "abcef", "administrador": "true"} 
+ </msg>
+<msg time="2024-07-17T18:16:47.881110" level="INFO">PUT Response : url=https://serverest.dev/usuarios/KYJhkN5tTF94jbx9 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '69c9a4c167f992cd5bef5eee387cde5c', 'Date': 'Wed, 17 Jul 2024 21:16:47 GMT', 'Server': 'Google Frontend', 'Content-Length': '50'} 
+ body={
+    "message": "Registro alterado com sucesso"
+} 
+ </msg>
+<msg time="2024-07-17T18:16:47.881110" level="INFO">C:\Users\gdmou\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-07-17T18:16:47.881110" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=${alias}</arg>
+<arg>url=/usuarios/${USER_ID}</arg>
+<arg>expected_status=200</arg>
+<arg>headers=${headers}</arg>
+<arg>data=${dados_updated}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.474371" elapsed="0.406739"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.881110" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.887122" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-07-17T18:16:47.881110" elapsed="0.006012"/>
+</kw>
+<doc>Atualiza a senha de acordo com o json de atualização</doc>
+<status status="PASS" start="2024-07-17T18:16:47.460189" elapsed="0.426933"/>
+</test>
+<test id="s1-t4" name="Deleta o usuario criado" line="45">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:47.890432" level="INFO">Creating Session using : alias=serverest-usuarios, url=https://serverest.dev/, headers={'Content-Type': 'application/json'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias=${alias}</arg>
+<arg>url=${url}</arg>
+<arg>headers=${headers}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-07-17T18:16:47.887122" elapsed="0.003310"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:48.294786" level="INFO">DELETE Request : url=https://serverest.dev/usuarios/KYJhkN5tTF94jbx9 
+ path_url=/usuarios/KYJhkN5tTF94jbx9 
+ headers={'User-Agent': 'python-requests/2.32.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-07-17T18:16:48.294786" level="INFO">DELETE Response : url=https://serverest.dev/usuarios/KYJhkN5tTF94jbx9 
+ status=200, reason=OK 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': 'd7c62f69bde6a7cddeac608e949729a3', 'Date': 'Wed, 17 Jul 2024 21:16:48 GMT', 'Server': 'Google Frontend', 'Content-Length': '51'} 
+ body={
+    "message": "Registro excluído com sucesso"
+} 
+ </msg>
+<msg time="2024-07-17T18:16:48.294786" level="INFO">C:\Users\gdmou\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-07-17T18:16:48.294786" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>alias=${alias}</arg>
+<arg>url=/usuarios/${USER_ID}</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-07-17T18:16:47.891448" elapsed="0.403338"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-07-17T18:16:48.294786" elapsed="0.000000"/>
+</kw>
+<kw name="Delete All Sessions" owner="RequestsLibrary">
+<msg time="2024-07-17T18:16:48.294786" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects</doc>
+<status status="PASS" start="2024-07-17T18:16:48.294786" elapsed="0.000000"/>
+</kw>
+<doc>Deleta o usuario cadastrado</doc>
+<status status="PASS" start="2024-07-17T18:16:47.887122" elapsed="0.407664"/>
+</test>
+<status status="PASS" start="2024-07-17T18:16:45.928787" elapsed="2.365999"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Main">Main</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
